@@ -14,10 +14,9 @@ def get_weather(place):
 
 def get_for_place():
     places = ['london', 'svo', 'cherepovec']
-    # for place in places:
-    #     get_weather(place)
-    #
-    get_weather(places[2])
+    for place in places:
+         get_weather(place)
+
 
 if __name__ == '__main__':
     get_for_place()
