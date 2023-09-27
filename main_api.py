@@ -2,8 +2,8 @@ import requests
 
 
 def get_weather(place):
-    url = f'https://wttr.in/{place}?nTqu&lang=en'
-    url_new = f'http://wttr.dvmn.org/{place}?nTqu&lang=en'
+    url = f'https://wttr.in/{place}?nTq&lang=ru&M'
+    url_new = f'http://wttr.dvmn.org/{place}?nTqu&lang=ru'
 
     response = requests.get(url)
     if response.status_code == 200:
@@ -14,8 +14,10 @@ def get_weather(place):
 
 def get_for_place():
     places = ['london', 'svo', 'cherepovec']
-    for place in places:
-        get_weather(place)
+    # for place in places:
+    #     get_weather(place)
+    #
+    get_weather(places[2])
 
 if __name__ == '__main__':
     get_for_place()
