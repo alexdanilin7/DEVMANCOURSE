@@ -2,27 +2,26 @@ import requests
 
 
 def get_weather(place):
+  
+    params = {
+        "n":"",
+        "T":"",
+        "q":"",
+        "lang":"ru",
+        "M":""
+    }
+    url = f'https://wttr.in/{place}'
+    url_new = f'http://wttr.dvmn.org/{place}'
+    
     try:
-        params = {
-            "n":"",
-            "T":"",
-            "q":"",
-            "lang":"ru",
-            "M":""
-        }
-        url = f'https://wttr.in/{place}'
-        url_new = f'http://wttr.dvmn.org/{place}'
-
         response = requests.get(url, params=params)
         response.raise_for_status()
-        if response.status_code == 200:
-            print(response.text)
-        else:
-            response = requests.get(url_new, params=params)
-            response.raise_for_status()
-            print(response.text)
-    except Exception as e:
-        print(e)
+    except requests.HTTPError as e:
+        response = requests.get(url_new, params=params)
+        response.raise_for_status()
+    
+    print(response.text)
+        
 
 
 def get_weather_for_place():
