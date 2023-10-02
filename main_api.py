@@ -11,14 +11,9 @@ def get_weather(place):
         "M":""
     }
     url = f'https://wttr.in/{place}'
-    url_new = f'http://wttr.dvmn.org/{place}'
-    
-    try:
-        response = requests.get(url, params=params)
-        response.raise_for_status()
-    except requests.HTTPError as e:
-        response = requests.get(url_new, params=params)
-        response.raise_for_status()
+
+    response = requests.get(url, params=params)
+    response.raise_for_status()
     
     print(response.text)
         
